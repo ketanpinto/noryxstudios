@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useInView } from 'motion/react';
-import { ArrowUpRight, Mail, MessageCircle } from 'lucide-react';
+import { Mail, MessageCircle } from 'lucide-react';
 
 const RevealElement = ({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) => {
   const ref = useRef(null);
@@ -194,7 +194,7 @@ export const Contact: React.FC = () => {
                       className={`liquid-glass-strong font-body rounded-full px-8 sm:px-10 py-5 text-white hover:bg-white/10 active:scale-95 transition-all duration-500 flex items-center gap-3 group min-h-[48px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                     >
                       {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
-                      {!isSubmitting && <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />}
+                      {/* {!isSubmitting && <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />} */}
                     </button>
 
                     {submitError && (
