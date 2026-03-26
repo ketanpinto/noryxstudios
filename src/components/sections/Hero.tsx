@@ -1,21 +1,32 @@
-
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'motion/react';
 
 import { Link } from 'react-router-dom';
 import { BlurText } from '../ui/blur-text';
 
 export const Hero: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.error("Autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
     <section className="relative overflow-visible min-h-screen sm:h-[1000px] bg-black flex flex-col items-center">
       {/* Background Video */}
       <div className="absolute inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
         <video
+          ref={videoRef}
           className="absolute top-1/2 left-1/2 w-[110vw] h-[110vh] min-w-[110vw] min-h-[110vh] object-cover -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none"
           autoPlay
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
