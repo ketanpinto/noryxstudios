@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
           transition={{ delay: 0.8, duration: 0.8 }}
           className="text-white/60 font-body font-light text-base sm:text-lg md:text-xl max-w-2xl mb-8 sm:mb-12"
         >
-          Design with intent. Craft without compromise. Every detail considered, every pixel deliberate.
+          High-end design & development for brands that want to stand out.
         </motion.p>
 
         {/* CTA Buttons */}

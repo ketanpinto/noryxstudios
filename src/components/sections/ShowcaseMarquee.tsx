@@ -1,17 +1,25 @@
 import React from 'react';
-import { HLSVideo } from '../ui/hls-video';
 
-// Mix of Mux URLs + standard video
+// 10 GIF showcase videos from /examplevideos
 const videos = [
-  "https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8",
-  "/hero-bg.mp4",
-  "https://stream.mux.com/NcU3HlHeF7CUL86azTTzpy3Tlb00d6iF3BmCdFslMJYM.m3u8",
-  "https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8"
+  "/examplevideos/examplevideo1.gif",
+  "/examplevideos/examplevideo2.gif",
+  "/examplevideos/examplevideo3.gif",
+  "/examplevideos/examplevideo4.gif",
+  "/examplevideos/examplevideo5.gif",
+  "/examplevideos/examplevideo6.gif",
+  "/examplevideos/examplevideo7.gif",
+  "/examplevideos/examplevideo8.gif",
+  "/examplevideos/examplevideo9.gif",
+  "/examplevideos/examplevideo10.gif",
 ];
 
-const Row = ({ reverse = false }: { reverse?: boolean }) => {
-  // Use 8 items per inner container (2 identical runs for seamless looping).
-  const rowVideos = [...videos, ...videos];
+// Split into two rows for balanced marquee
+const row1Videos = videos.slice(0, 5);
+const row2Videos = videos.slice(5, 10);
+
+const Row = ({ reverse = false, items }: { reverse?: boolean; items: string[] }) => {
+  const rowVideos = [...items, ...items];
   const marqueeClass = reverse ? 'animate-marquee-right' : 'animate-marquee-left';
 
   return (
@@ -23,21 +31,14 @@ const Row = ({ reverse = false }: { reverse?: boolean }) => {
         {rowVideos.map((src, i) => (
           <div 
             key={i} 
-            className="w-[250px] md:w-[350px] lg:w-[450px] h-[150px] md:h-[220px] lg:h-[280px] shrink-0 mr-4 md:mr-6 ios-glass rounded-[1.5rem] md:rounded-[2rem] overflow-hidden"
+            className="w-[280px] md:w-[380px] lg:w-[480px] aspect-video shrink-0 mr-4 md:mr-6 ios-glass rounded-[1.5rem] md:rounded-[2rem] overflow-hidden"
           >
-            {src.endsWith('.mp4') ? (
-              <video 
-                src={src} 
-                autoPlay loop muted playsInline 
-                className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110"
-              />
-            ) : (
-              <HLSVideo 
-                src={src} 
-                autoPlay loop muted playsInline 
-                className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110"
-              />
-            )}
+            <img 
+              src={src} 
+              alt="Showcase" 
+              loading="lazy"
+              className="w-full h-full object-cover object-top opacity-90 transition-transform duration-700 hover:scale-110"
+            />
           </div>
         ))}
       </div>
@@ -50,21 +51,14 @@ const Row = ({ reverse = false }: { reverse?: boolean }) => {
         {rowVideos.map((src, i) => (
           <div 
             key={i} 
-            className="w-[250px] md:w-[350px] lg:w-[450px] h-[150px] md:h-[220px] lg:h-[280px] shrink-0 mr-4 md:mr-6 ios-glass rounded-[1.5rem] md:rounded-[2rem] overflow-hidden"
+            className="w-[280px] md:w-[380px] lg:w-[480px] aspect-video shrink-0 mr-4 md:mr-6 ios-glass rounded-[1.5rem] md:rounded-[2rem] overflow-hidden"
           >
-            {src.endsWith('.mp4') ? (
-              <video 
-                src={src} 
-                autoPlay loop muted playsInline 
-                className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110"
-              />
-            ) : (
-              <HLSVideo 
-                src={src} 
-                autoPlay loop muted playsInline 
-                className="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-110"
-              />
-            )}
+            <img 
+              src={src} 
+              alt="Showcase" 
+              loading="lazy"
+              className="w-full h-full object-cover object-top opacity-90 transition-transform duration-700 hover:scale-110"
+            />
           </div>
         ))}
       </div>
@@ -89,8 +83,8 @@ export const ShowcaseMarquee: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-4 md:gap-6 relative z-10">
-        <Row reverse={true} />
-        <Row reverse={false} />
+        <Row reverse={true} items={row1Videos} />
+        <Row reverse={false} items={row2Videos} />
       </div>
     </section>
   );

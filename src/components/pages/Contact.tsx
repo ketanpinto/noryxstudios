@@ -56,15 +56,44 @@ const InstagramIcon = () => (
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', details: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    // Form submission logic would go here
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const submissionData = new FormData();
+    submissionData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
+    submissionData.append("name", formData.name);
+    submissionData.append("email", formData.email);
+    submissionData.append("message", formData.details);
+    submissionData.append("subject", `New Inquiry from ${formData.name}`);
+    submissionData.append("from_name", "Noryx Studios Website");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setSubmitError("Failed to send message. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -158,13 +187,26 @@ export const Contact: React.FC = () => {
                 </RevealElement>
 
                 <RevealElement delay={0.4}>
-                  <button
-                    type="submit"
-                    className="liquid-glass-strong font-body rounded-full px-8 sm:px-10 py-5 text-white hover:bg-white/10 active:scale-95 transition-all duration-500 flex items-center gap-3 group mt-4 min-h-[48px]"
-                  >
-                    Submit Inquiry
-                    <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
-                  </button>
+                  <div className="space-y-4 mt-4">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`liquid-glass-strong font-body rounded-full px-8 sm:px-10 py-5 text-white hover:bg-white/10 active:scale-95 transition-all duration-500 flex items-center gap-3 group min-h-[48px] ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    >
+                      {isSubmitting ? 'Sending...' : 'Submit Inquiry'}
+                      {!isSubmitting && <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />}
+                    </button>
+
+                    {submitError && (
+                      <motion.p
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="text-red-400 text-sm font-body"
+                      >
+                        {submitError}
+                      </motion.p>
+                    )}
+                  </div>
                 </RevealElement>
               </form>
             ) : (
@@ -201,11 +243,11 @@ export const Contact: React.FC = () => {
                       <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors duration-500">
                         <Mail size={16} />
                       </div>
-                      <span className="font-body font-light text-base">hello@noryxstudios.com</span>
+                      <span className="font-body font-light text-base">ketanpinto16@gmail.com</span>
                     </a>
 
                     <a
-                      href="https://wa.me/1234567890"
+                      href="https://wa.me/+971522786730?text=Hello%20I%27d%20like%20to%20learn%20more%20about%20Noryx%20Studios..."
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-4 text-white/60 hover:text-white transition-colors duration-500 group"

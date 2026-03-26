@@ -69,7 +69,7 @@ export const Navbar: React.FC = () => {
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
                   <span className="relative z-10">Inquire</span>
-                  <div className="relative overflow-hidden w-4 h-4">
+                  {/* <div className="relative overflow-hidden w-4 h-4">
                     <motion.div
                       className="flex flex-col"
                       variants={{
@@ -83,7 +83,7 @@ export const Navbar: React.FC = () => {
                       <ArrowUpRight size={16} className="shrink-0" />
                       <ArrowUpRight size={16} className="shrink-0" />
                     </motion.div>
-                  </div>
+                  </div> */}
                 </motion.div>
               </Link>
             </div>
