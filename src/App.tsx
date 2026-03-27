@@ -11,11 +11,13 @@ import { Testimonials } from './components/sections/Testimonials';
 import { Footer } from './components/sections/Footer';
 import { Contact } from './components/pages/Contact';
 import { ScrollToTop } from './components/ui/ScrollToTop';
+import { Analytics } from "@vercel/analytics/react"
 
 import { ReactLenis } from 'lenis/react';
 
 const HomePage = () => (
   <>
+    <Analytics />
     <Hero />
     <HowItWorks />
     <ShowcaseMarquee />

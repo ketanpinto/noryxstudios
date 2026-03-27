@@ -1,5 +1,5 @@
 
-import { ArrowUpRight } from 'lucide-react';
+// import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { HLSVideo } from '../ui/hls-video';
 
@@ -42,7 +42,7 @@ export const HowItWorks: React.FC = () => {
 
         <Link to="/contact" className="liquid-glass-strong font-body rounded-full px-6 sm:px-8 py-4 text-white hover:bg-white/10 active:scale-95 transition-all flex items-center gap-2 min-h-[48px]">
           Begin
-          <ArrowUpRight size={18} />
+          {/* <ArrowUpRight size={18} /> */}
         </Link>
       </div>
     </section>
