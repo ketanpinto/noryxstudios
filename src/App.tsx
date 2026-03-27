@@ -10,6 +10,7 @@ import { Stats } from './components/sections/Stats';
 import { Testimonials } from './components/sections/Testimonials';
 import { Footer } from './components/sections/Footer';
 import { Contact } from './components/pages/Contact';
+import WorkSection from "./components/sections/Work";
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { Analytics } from "@vercel/analytics/react"
 
@@ -22,6 +23,7 @@ const HomePage = () => (
     <HowItWorks />
     <ShowcaseMarquee />
     <FeaturesChess />
+    <WorkSection />
     <FeaturesGrid />
     <Stats />
     <Testimonials />
