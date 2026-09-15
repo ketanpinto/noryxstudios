@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <section className="relative w-full min-h-[500px] sm:min-h-[800px] pt-20 sm:pt-32 pb-12 flex flex-col items-center justify-end overflow-hidden bg-black">
       {/* Background HLS Video */}
-      <HLSVideo 
+      <HLSVideo
         src="https://stream.mux.com/8wrHPCX2dC3msyYU9ObwqNdm00u3ViXvOSHUMRYSEe5Q.m3u8"
         className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
@@ -14,13 +14,13 @@ export const Footer: React.FC = () => {
         muted
         playsInline
       />
-      
+
       {/* Top + Bottom fade gradients */}
-      <div 
+      <div
         className="absolute top-0 left-0 right-0 h-[200px] z-[1] pointer-events-none"
         style={{ background: 'linear-gradient(to bottom, black, transparent)' }}
       />
-      <div 
+      <div
         className="absolute bottom-0 left-0 right-0 h-[200px] z-[1] pointer-events-none"
         style={{ background: 'linear-gradient(to top, black, transparent)' }}
       />
@@ -33,14 +33,14 @@ export const Footer: React.FC = () => {
         <p className="text-white/60 font-body font-light text-base sm:text-lg md:text-xl text-center max-w-xl mb-8 sm:mb-12">
           Reserved for those ready to elevate. Let’s have a conversation.
         </p>
-        
+
         <div className="flex flex-col sm:flex-row items-center gap-6">
           <Link to="/contact" className="liquid-glass-strong font-body rounded-full px-6 sm:px-8 py-4 text-white hover:bg-white/10 active:scale-95 transition-all min-h-[48px]">
             Schedule a Call
           </Link>
-          <button className="bg-white text-black font-body rounded-full px-6 sm:px-8 py-4 hover:bg-white/90 active:scale-95 transition-all min-h-[48px]">
+          {/* <button className="bg-white text-black font-body rounded-full px-6 sm:px-8 py-4 hover:bg-white/90 active:scale-95 transition-all min-h-[48px]">
             View Pricing
-          </button>
+          </button> */}
         </div>
       </div>
 

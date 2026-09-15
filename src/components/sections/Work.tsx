@@ -28,10 +28,17 @@ const projects: Project[] = [
     },
     {
         id: 3,
-        title: "Coming Soon",
-        tags: ["BRANDING", "TECHNOLOGY"],
-        image: "/Work/cs.png"
-    }
+        title: "Silver Gym",
+        tags: ["Gym & Fitness", "Website Design & Development"],
+        image: "/Work/sg.png",
+        link: "https://silvergym.vercel.app"
+    },
+    // {
+    //     id: 4,
+    //     title: "Coming Soon",
+    //     tags: ["BRANDING", "TECHNOLOGY"],
+    //     image: "/Work/cs.png"
+    // },
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => {

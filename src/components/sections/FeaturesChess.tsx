@@ -144,7 +144,7 @@ export const FeaturesChess: React.FC = () => {
                   </RevealElement>
                 </div>
                 <div className="flex-1 w-full">
-                  <RevealImage src={img1} reverse={false} />
+                  <RevealImage src={img1} reverse={true} />
                 </div>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { BlurText } from '../ui/blur-text';
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play().catch(error => {

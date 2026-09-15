@@ -237,7 +237,7 @@ export const Contact: React.FC = () => {
                   </p>
                   <div className="space-y-6">
                     <a
-                      href="mailto:hello@noryxstudios.com"
+                      href="mailto:ketanpinto16@gmail.com"
                       className="flex items-center gap-4 text-white/60 hover:text-white transition-colors duration-500 group"
                     >
                       <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-white/30 transition-colors duration-500">
@@ -277,7 +277,7 @@ export const Contact: React.FC = () => {
                     Availability
                   </p>
                   <p className="text-white/50 font-body font-light text-sm leading-relaxed">
-                    Currently accepting projects for Q2 2026. Response within 48 hours.
+                    Currently accepting projects for Q4 2026. Response within 48 hours.
                   </p>
                 </div>
 
